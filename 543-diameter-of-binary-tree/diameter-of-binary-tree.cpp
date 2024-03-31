@@ -23,20 +23,19 @@ public:
     // maximum level is the diameter of the BT. This appraoch
     // is ensure the problem of root node.
 
-
-    int mx = INT_MIN;
     int level(TreeNode* root) {
         if(root == NULL) return 0;
         return (1 + max(level(root->left), level(root->right)));
     }
-    void display(TreeNode* root) {
+    void helper(TreeNode* root, int& mx) {
         if(root == NULL) return;
         mx = max(mx, (level(root->left) + level(root->right)));
-        display(root->left);
-        display(root->right);
+        helper(root->left, mx);
+        helper(root->right, mx);
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        display(root);
+        int mx = 0;
+        helper(root, mx);
         return mx;
     }
 };
