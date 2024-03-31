@@ -23,11 +23,11 @@ public:
         if(p == NULL and q != NULL) return false;
         if(p->val != q->val) return false;
 
-        bool left =  isSameTree(p->left, q->left);
-        if(left == false) return false;
+        bool left = isSameTree(p->left, q->left);
+        if(left == false) return false; // Here after check both left values of subtree of both trees, and their values are not equal then return false.
 
         bool right = isSameTree(p->right, q->right);
-        if(right == false) return false;
+        if(right == false) return false; // Same goes for right also.
 
         return true;
 
