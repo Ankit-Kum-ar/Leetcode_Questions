@@ -10,7 +10,17 @@
  * };
  */
 
- 
+ /*
+    Approach :- Apply recusrion to traverse in the tree then
+    if any root has encounter whose left and right child
+    are NULL then it should be a leaf node therefore return
+    at that point. 
+    if root become NULL then return without pushing string
+    in vector string.
+
+    Remeber don't push those nodes whose only one child is
+    NULL bcz they are not the leaf node.
+ */
 class Solution {
 public:
     void helper (TreeNode* root, vector<string>& s, string str) {
