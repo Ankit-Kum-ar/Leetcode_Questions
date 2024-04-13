@@ -1,3 +1,8 @@
+/*
+    Approach :- Apply algorithm of postorder traversal and store
+    values in the vector.
+*/
+
 class Solution {
 public:
     void helper (TreeNode* root, vector<int>& ans) {
