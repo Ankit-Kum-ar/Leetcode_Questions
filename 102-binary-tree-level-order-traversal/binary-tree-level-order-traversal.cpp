@@ -1,3 +1,13 @@
+/*
+    Approach :- The approach is that firslty find the number of
+    levels in the tree. Now we have to traverse each level of 
+    tree. Therefore we apply in/pre/post order with a certain
+    condition of the nth level that show in code. Such that for
+    each level we apply a condition of curr == level. After 
+    encounter the desired level we push all elements in the
+    vector. Then this vector push in vector of vector.
+*/
+
 class Solution {
 public:
     int level(TreeNode* root) {
