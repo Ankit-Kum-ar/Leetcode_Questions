@@ -2,6 +2,7 @@
     Approach :- Here we apply another approach. The approach is
     similar to preorder approach of implementing the stack but
     here we apply the pushing statement as left first then right
+    => it gives (root, right, left) 
     and then reverse it => The outcome is postorder Traversal.
 */
 class Solution {
