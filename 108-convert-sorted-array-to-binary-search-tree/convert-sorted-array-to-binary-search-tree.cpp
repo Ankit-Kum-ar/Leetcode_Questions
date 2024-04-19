@@ -1,13 +1,7 @@
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
+    Approach :- The middle element of array is root of BST. Bcz BST
+    is sorted in inorder traversal. For the left and right apply
+    recursion so that it form subtrees
  */
 class Solution {
 public:
