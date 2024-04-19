@@ -47,3 +47,9 @@ public:
         return root;
     }
 };
+
+/*
+    Approach :- ek dusri approach bhi hai ki preorder ke elements
+    pr for loop chla kr insert method call krte rho toh BST ban jaaega
+    or usme extra vector lena ni pdega.
+*/
