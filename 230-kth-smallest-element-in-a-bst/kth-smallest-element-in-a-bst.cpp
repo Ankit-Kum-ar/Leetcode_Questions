@@ -14,7 +14,7 @@ public:
         inorder(root->right, k, n);
     }
     int kthSmallest(TreeNode* root, int k) {
-        int n = INT_MAX;
+        int n;
         inorder(root, k, n);
         return n;
     }
