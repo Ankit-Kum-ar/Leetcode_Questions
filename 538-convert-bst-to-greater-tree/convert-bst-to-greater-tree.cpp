@@ -3,22 +3,17 @@
  */
 class Solution {
 public:
-    void helper(TreeNode* root, TreeNode*& prev) {
+    void helper(TreeNode* root, int& sum) { //  Reverse Inorder
         if(root == NULL) return;
-        helper(root->right, prev);
-        if (prev == NULL) {
-            prev = root;
-        }
-        else {
-            root->val += prev->val;
-            prev = root;
-        }
-        helper(root->left, prev);
+        helper(root->right, sum);
+        root->val += sum;
+        sum = root->val;
+        helper(root->left, sum);
 
     }
     TreeNode* convertBST(TreeNode* root) {
-        TreeNode* prev = NULL;
-        helper(root, prev);
+        int sum = 0;
+        helper(root, sum);
         return root;
     }
 };
