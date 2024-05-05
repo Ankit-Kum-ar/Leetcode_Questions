@@ -1,32 +1,31 @@
-/*
-    Approach :- Firstly consider a stack that has initially 
-    root value in it. Now iterate a loop in which if current-
-    node is not empty then push current node to stack and 
-    make current node to node ka left node.
-    Else pop out the top node from stack and print or store 
-    that after make current node to node ka right node.
-*/
+// Apply Morris Traversal Algorithm ....
 class Solution {
 public:
-    void traversal (TreeNode* root, vector<int>& ans) {
-        stack<TreeNode*> stk;
-        TreeNode* node = root;
-        while(stk.size() > 0 || node != NULL) {
-            if(node != NULL) {
-                stk.push(node);
-                node = node->left;
+    vector<int> inorderTraversal(TreeNode* root) {
+        TreeNode* curr = root;
+        vector<int> v;
+        while(curr != NULL) {
+            if(curr->left != NULL) {
+                TreeNode* pred = curr->left;
+                while(pred->right != NULL and pred->right != curr) {
+                    pred = pred->right;
+                }
+                
+                if(pred->right == NULL) {
+                    pred->right = curr;
+                    curr = curr->left;
+                }
+                if(pred->right == curr) {
+                    pred->right = NULL;
+                    v.push_back(curr->val);
+                    curr = curr->right;
+                }
             }
             else {
-                TreeNode* temp = stk.top();
-                stk.pop();
-                ans.push_back(temp->val);
-                node = temp->right;
+                v.push_back(curr->val);
+                curr = curr->right;
             }
         }
-    }
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        traversal(root, ans);
-        return ans;
+        return v;
     }
 };
