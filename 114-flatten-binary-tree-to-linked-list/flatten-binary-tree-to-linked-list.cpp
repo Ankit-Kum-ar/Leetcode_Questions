@@ -2,26 +2,25 @@
     Approach - 1 :- Make a vector that stores preorder traversal of
     Tree. Then make all node left is null and right should linked
     so that it formed a linked list.
+
+    Approach - 2 :- It is a recursive appraoch in which we flatten
+    the left subtree as well as right subtree. After these subtrees
+    are flatten then join them in right branch of root.
+    The flatten operation in handled by the recursion...
 */
 class Solution {
 public:
-    // Preorder Traversal that store in vector 'v'.
-    void preorderTraversal (TreeNode* root, vector<TreeNode*>& v) {
-        if(root == NULL) return;
-        v.push_back(root);
-        preorderTraversal(root->left, v);
-        preorderTraversal(root->right, v);
-    }
     void flatten(TreeNode* root) {
         if(root == NULL) return;
-        vector<TreeNode*> v;
-        preorderTraversal(root, v);
-
-        // Now change the linking of Tree using vector 'v'.
-        for(int i=0;i<v.size()-1;i++) {
-            root->right = v[i+1];
-            root->left = NULL;
-            root = root->right;
-        }
+        TreeNode* l = root->left;
+        TreeNode* r = root->right;
+        root->left = NULL;
+        root->right = NULL;
+        flatten(l);
+        flatten(r);
+        root->right = l;
+        TreeNode* temp = root;
+        while(temp->right != NULL) temp = temp->right;
+        temp->right = r;
     }
 };
