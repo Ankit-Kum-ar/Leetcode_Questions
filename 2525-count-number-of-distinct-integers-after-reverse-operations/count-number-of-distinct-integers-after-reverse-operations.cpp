@@ -12,7 +12,7 @@ public:
         int n = nums.size();
         for(int i=0;i<n;i++){
             int x = nums[i];
-            if(x < 9) nums.push_back(x);
+            if(x < 10) nums.push_back(x);
             else {
                 int temp = 0;
                 while(x != 0) {
