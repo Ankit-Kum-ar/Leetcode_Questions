@@ -15,8 +15,8 @@
 class Solution {
 public:
     vector<int> findEvenNumbers(vector<int>& digits) {
-        unordered_map<int, int> m;
-        unordered_map<int, int> temp;
+        unordered_map<int, int> m; // Main hashmap
+        unordered_map<int, int> temp; // Temproary hashmap
         for(int i=0;i<digits.size();i++) m[digits[i]]++;
         vector<int> v;
         for(int i=100;i<1000;i=i+2) {
