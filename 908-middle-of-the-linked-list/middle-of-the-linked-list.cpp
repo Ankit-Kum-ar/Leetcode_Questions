@@ -1,25 +1,35 @@
-/*
-    Approach :- 
-    1. Count the number of nodes that list consist.
-    2. Now find the middle by (count/2).
-    3. Apply a loop from 1 to middle and get the middle node.
-    4. return that middle node.
-*/
-
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
+        int count = 1;
         ListNode* temp = head;
-        int count = 0;
         while(temp != NULL) {
             count++;
             temp = temp->next;
         }
+
+        int n;
+        if(count%2 == 0) {
+            n = count/2;
+        }
+        else {
+            n = count/2 + 1;
+        }
         temp = head;
-        int middle = count/2;
-        for(int i=1;i<=middle;i++) {
+        for(int i=1;i<n;i++) {
             temp = temp->next;
         }
+
         return temp;
     }
 };
