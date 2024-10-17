@@ -5,12 +5,13 @@ public:
         for(int i=0;i<arr.size();i++) {
             mp[arr[i]]++;
         }
-        unordered_set<int> s;
+
+        unordered_set<int> st;
         for(auto x:mp) {
-            int freq = x.second;
-            if(s.find(freq) != s.end()) return false;
-            else s.insert(freq);
+            st.insert(x.second);
         }
+
+        if(mp.size() != st.size()) return false;
         return true;
     }
 };
