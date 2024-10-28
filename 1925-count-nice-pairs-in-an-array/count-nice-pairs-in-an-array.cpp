@@ -5,34 +5,23 @@ public:
         while(n != 0) {
             int rem = n%10;
             x = x*10 + rem;
-            n = n/10; 
+            n = n/10;
         }
         return x;
     }
     int countNicePairs(vector<int>& nums) {
-        // Making the vector as nums[i] - rev(nums[i])
-        for(int i=0;i<nums.size();i++) {
-            nums[i] = nums[i] - rev(nums[i]);
-        }
-
-        // Make a map that hold the frequency of each number.
         unordered_map<int, int> m;
-        int count = 0;
+        int cnt = 0;
         for(int i=0;i<nums.size();i++) {
-            // To find the number of pairs, we have to check
-            // before increment the frequency that number
-            // has already exist or not. If exist then 
-            // add the perv freq of that number and increase
-            // the freq of that number also.
-            if(m.find(nums[i]) != m.end()) {
-                count = count%1000000007;
-                count += m[nums[i]];
-                m[nums[i]]++;
+            int num = nums[i] - rev(nums[i]);
+            if(m.find(num) != m.end()) {
+                cnt = cnt%1000000007;
+                cnt += m[num];
             }
-            else m[nums[i]]++;
-        }
+            m[num]++;
+        }        
 
-        return count%1000000007;
-
+        cnt = cnt%1000000007;
+        return cnt;
     }
 };
